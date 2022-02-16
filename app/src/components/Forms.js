@@ -1,16 +1,47 @@
 import React from "react";
 import { useState } from "react";
-import "./styles/Form.css";
 import Personal from "./Personal";
 import Education from "./Education";
 import Experience from "./Experience";
+import Generate from "./Generate";
 const Forms = () => {
+  const [generate, setGenerate] = useState(true);
+  const [personal, setPersonal] = useState({
+    firstName: "Arjun",
+    lastName: "Bhandal",
+    linkedin: "linkedin.com",
+    github: "github.com",
+    number: "6478391406",
+    email: "arjunsingh140601@gmail.com",
+  });
   const [educationList, setEducation] = useState([
-    { schoolName: "", degree: "", startDate: "", endDate: "" },
+    { schoolName: "Ryerson University", degree: "BSc in Computer Science", startDate: "September 2021", endDate: "May 2026" },
   ]);
   const [experienceList, setExperience] = useState([
-    { experience: "", startDate: "", endDate: "", description: "" },
+    {
+      experience: "Unemployed",
+      startDate: "June 2001",
+      endDate: "Febuary 2022",
+      description: "Just jobless lololololol",
+    },
+    {
+      experience: "Unemployed",
+      startDate: "June 2001",
+      endDate: "Febuary 2022",
+      description: "Just jobless lololololol",
+    },
+    {
+      experience: "Unemployed",
+      startDate: "June 2001",
+      endDate: "Febuary 2022",
+      description: "Just jobless lololololol",
+    },
   ]);
+  const handlePersonalChange = (e) => {
+    const personalTemp = { ...personal };
+    personalTemp[e.target.name] = e.target.value;
+    setPersonal(personalTemp);
+  };
   const handeEducationChange = (e, i) => {
     const list = [...educationList];
     list[i][e.target.name] = e.target.value;
@@ -51,31 +82,54 @@ const Forms = () => {
       setExperience(list);
     }
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setGenerate(!generate);
+    console.log(generate);
+  };
+
   return (
-    <form>
-      <section>
-        <h2>Personal Information</h2>
-        <Personal />
-      </section>
-      <section>
-        <h2>Education</h2>
-        <Education
-          inputList={educationList}
-          handleChange={handeEducationChange}
-          add={addEducation}
-          remove={removeEducation}
+    <div>
+      {!generate && (
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <section className="personal-sect">
+            <h2>Personal Information</h2>
+            <Personal {...personal} onChange={handlePersonalChange}/>
+          </section>
+          <section className="edu-sect">
+            <h2>Education</h2>
+            <Education
+              inputList={educationList}
+              handleChange={handeEducationChange}
+              add={addEducation}
+              remove={removeEducation}
+            />
+          </section>
+          <section>
+            <h2>Experience</h2>
+            <Experience
+              inputList={experienceList}
+              handleChange={handleExperienceChange}
+              add={addExperience}
+              remove={removeExperience}
+            />
+          </section>
+          <button>Submit</button>
+          {generate && (
+            <Generate Education={educationList} Experience={experienceList} />
+          )}
+        </form>
+      )}
+      {generate && (
+        <Generate
+          personal={personal}
+          education={educationList}
+          experience={experienceList}
+          submit={handleSubmit}
         />
-      </section>
-      <section>
-        <h2>Experience</h2>
-        <Experience
-          inputList={experienceList}
-          handleChange={handleExperienceChange}
-          add={addExperience}
-          remove={removeExperience}
-        />
-      </section>
-    </form>
+      )}
+    </div>
   );
 };
 

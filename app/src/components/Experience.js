@@ -1,11 +1,12 @@
 import React from "react";
+import "./styles/Experience.css";
 
 const Experience = ({ inputList, handleChange, add, remove }) => {
   return (
     <fieldset>
       {inputList.map((input, index) => {
         return (
-          <fieldset key={index}>
+          <div className="experience" key={index}>
             <label htmlFor="experience">experience</label>
             <input
               type="text"
@@ -42,7 +43,7 @@ const Experience = ({ inputList, handleChange, add, remove }) => {
             <button type="button" onClick={() => remove(index)}>
               Remove
             </button>
-          </fieldset>
+          </div>
         );
       })}
       )

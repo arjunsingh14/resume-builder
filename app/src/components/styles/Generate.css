@@ -1,0 +1,36 @@
+.resume {
+    box-sizing: border-box;
+    width: 210mm;
+    height: 297mm;
+    background-color: white;
+    padding: 50px;
+    margin-top: 50px;
+}
+
+.first-last-name {
+    font-size: 24px;
+}
+.contacts {
+    margin-top:-15px;
+    display: flex;
+    justify-content: space-between;
+}
+.contact {
+    font-size: 13.5px;
+}
+
+.web {
+    text-decoration: underline;
+}
+
+
+.education-display>h2 {
+    color: black;
+}
+
+.education-display>div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13.5px;
+    margin-top: -15px;
+}

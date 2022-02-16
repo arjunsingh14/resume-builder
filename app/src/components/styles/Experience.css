@@ -1,0 +1,13 @@
+h2, label {
+    color: burlywood;
+}
+
+.experience {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.experience>div {
+    color: burlywood;
+}
