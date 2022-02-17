@@ -8,11 +8,12 @@ import Projects from "./Projects";
 import Skills from "./Skills";
 import Generate from "./Generate";
 const Forms = () => {
-  const [generate, setGenerate] = useState(true);
+  const [generate, setGenerate] = useState(false);
   const [project, setProjects] = useState([{
     project: "Resume Builder",
     projectDescription: "Built a resume builder using ReactJS and HTML/CSS",
   }]);
+  const [check, setCheck] = useState(true)
   const [skills, setSkills] = useState({
     language: "",
     technology: "",
@@ -115,6 +116,8 @@ const Forms = () => {
     console.log(generate);
   };
 
+
+
   class ComponentToPrint extends React.PureComponent {
     render() {
       return (
@@ -124,6 +127,7 @@ const Forms = () => {
           experience={experienceList}
           skill={skills}
           project={project}
+          check={check}
           submit={handleSubmit}
         />
       );
@@ -174,7 +178,9 @@ const Forms = () => {
               remove={removeEducation}
             />
           </section>
-          <section>
+          <label htmlFor="experience">Add experience</label>
+          <input type="checkbox" onClick={() => setCheck(!check)}/>
+          {!check && (<section>
             <h2>Experience</h2>
             <Experience
               inputList={experienceList}
@@ -182,7 +188,7 @@ const Forms = () => {
               add={addExperience}
               remove={removeExperience}
             />
-          </section>
+          </section>)}
           <button>Submit</button>
         </form>
       )}

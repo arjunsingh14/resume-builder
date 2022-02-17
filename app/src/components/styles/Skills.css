@@ -1,0 +1,8 @@
+#skills {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#skills>div>label {
+    display: block;
+}

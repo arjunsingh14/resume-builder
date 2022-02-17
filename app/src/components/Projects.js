@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import "./styles/Project.css";
 
 const Projects = ({ add, handleChange, inputList, remove }) => {
   return (
@@ -6,35 +7,40 @@ const Projects = ({ add, handleChange, inputList, remove }) => {
       {inputList.map((input, index) => {
         return (
           <div className="projects" key={index}>
-            <label htmlFor="project">Experience</label>
-            <input
-              type="text"
-              name="project"
-              id="project"
-              value={input.experience}
-              onChange={(e) => handleChange(e, index)}
-            />
-            <label htmlFor="description">Description</label>
-            <textarea
-              name="projectDescription"
-              id="projectDescription"
-              cols="30"
-              rows="10"
-              value={input.description}
-              onChange={(e) => handleChange(e, index)}
-            ></textarea>
-            <button type="button" onClick={() => remove(index)}>
-              Remove
-            </button>
+              <label htmlFor="project">Project</label>
+              <input
+                type="text"
+                name="project"
+                id="project"
+                value={input.experience}
+                onChange={(e) => handleChange(e, index)}
+              />
+        
+              <label htmlFor="projectDescription">Description</label>
+              <textarea
+                name="projectDescription"
+                id="projectDescription"
+                cols="50"
+                rows="4"
+                value={input.description}
+                onChange={(e) => handleChange(e, index)}
+              ></textarea>
+              <button
+                className="proj-button"
+                type="button"
+                onClick={() => remove(index)}
+              >
+                Remove
+              </button>
           </div>
         );
       })}
       )
       <button type="button" onClick={() => add()}>
-        Add Experience
+        Add Project
       </button>
     </fieldset>
   );
-}
+};
 
-export default Projects
+export default Projects;

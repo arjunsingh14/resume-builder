@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/Generate.css";
-const Generate = ({ education, experience, personal, skill, project }) => {
+const Generate = ({ education, experience, personal, skill, project, check }) => {
   const { firstName, lastName, linkedin, github, number, email } = personal;
   return (
     <article className="resume">
@@ -56,7 +56,7 @@ const Generate = ({ education, experience, personal, skill, project }) => {
           );
         })}
       </section>
-      <section className="experience-display">
+      {!check && <section className="experience-display">
         <h2>Experience</h2>
         {experience.map((exp, index) => {
           return (
@@ -73,7 +73,7 @@ const Generate = ({ education, experience, personal, skill, project }) => {
             </div>
           );
         })}
-      </section>
+      </section>}
     </article>
   );
 };
