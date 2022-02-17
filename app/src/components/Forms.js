@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useRef} from "react";
 import { useState } from "react";
+import ReactToPrint from "react-to-print";
 import Personal from "./Personal";
 import Education from "./Education";
 import Experience from "./Experience";
+import Skills from "./Skills";
 import Generate from "./Generate";
 const Forms = () => {
-  const [generate, setGenerate] = useState(false);
+  const [generate, setGenerate] = useState(true);
+  const [skills, setSkills] = useState({
+    language: "",
+    technology:
+      "",
+  });
   const [personal, setPersonal] = useState({
     firstName: "",
     lastName: "",
@@ -29,13 +36,18 @@ const Forms = () => {
       experience: "",
       startDate: "",
       endDate: "",
-      description:"",
+      description:""
     },
   ]);
   const handlePersonalChange = (e) => {
     const personalTemp = { ...personal };
     personalTemp[e.target.name] = e.target.value;
     setPersonal(personalTemp);
+  };
+  const handleSkillChange = (e) => {
+    const skillsTemp = { ...skills };
+    skillsTemp[e.target.name] = e.target.value;
+    setSkills(skillsTemp);
   };
   const handeEducationChange = (e, i) => {
     const list = [...educationList];
@@ -84,6 +96,35 @@ const Forms = () => {
     console.log(generate);
   };
 
+  class ComponentToPrint extends React.PureComponent {
+    render() {
+      return (
+        <Generate
+          personal={personal}
+          education={educationList}
+          experience={experienceList}
+          skill = {skills}
+          submit={handleSubmit}
+        />
+      );
+    }
+  }
+
+  const Example = () => {
+    const componentRef = useRef();
+
+    return (
+      <div>
+        <ReactToPrint
+          trigger={() => <button>Print Resume</button>}
+          content={() => componentRef.current}
+        />
+        <ComponentToPrint ref={componentRef} />
+      </div>
+    );
+  };
+  
+
   return (
     <div>
       {!generate && (
@@ -91,6 +132,10 @@ const Forms = () => {
           <section className="personal-sect">
             <h2>Personal Information</h2>
             <Personal personal={personal} onChange={handlePersonalChange} />
+          </section>
+          <section>
+            <h2>Skills</h2>
+            <Skills skill={skills} skillChange={handleSkillChange}></Skills>
           </section>
           <section className="edu-sect">
             <h2>Education</h2>
@@ -111,21 +156,19 @@ const Forms = () => {
             />
           </section>
           <button>Submit</button>
-          {generate && (
-            <Generate Education={educationList} Experience={experienceList} />
-          )}
         </form>
       )}
       {generate && (
-        <Generate
-          personal={personal}
-          education={educationList}
-          experience={experienceList}
-          submit={handleSubmit}
-        />
+        <>
+          <Example />
+          <button onClick={(e) => handleSubmit(e)}>Edit</button>
+        </>
       )}
     </div>
   );
 };
 
 export default Forms;
+
+
+
