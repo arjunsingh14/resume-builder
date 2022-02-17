@@ -1,17 +1,21 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import ReactToPrint from "react-to-print";
 import Personal from "./Personal";
 import Education from "./Education";
 import Experience from "./Experience";
+import Projects from "./Projects";
 import Skills from "./Skills";
 import Generate from "./Generate";
 const Forms = () => {
   const [generate, setGenerate] = useState(true);
+  const [project, setProjects] = useState([{
+    project: "Resume Builder",
+    projectDescription: "Built a resume builder using ReactJS and HTML/CSS",
+  }]);
   const [skills, setSkills] = useState({
     language: "",
-    technology:
-      "",
+    technology: "",
   });
   const [personal, setPersonal] = useState({
     firstName: "",
@@ -25,7 +29,7 @@ const Forms = () => {
     {
       schoolName: "",
       degree: "",
-      gpa:"",
+      gpa: "",
       awards: "",
       startDate: "",
       endDate: "",
@@ -36,7 +40,7 @@ const Forms = () => {
       experience: "",
       startDate: "",
       endDate: "",
-      description:""
+      description: "",
     },
   ]);
   const handlePersonalChange = (e) => {
@@ -54,6 +58,11 @@ const Forms = () => {
     list[i][e.target.name] = e.target.value;
     setEducation(list);
   };
+  const handleProjectChange = (e, i) => {
+    const list = [...project];
+    list[i][e.target.name] = e.target.value;
+    setProjects(list);
+  };
   const addEducation = () => {
     const list = [
       ...educationList,
@@ -61,7 +70,10 @@ const Forms = () => {
     ];
     setEducation(list);
   };
-
+  const addProject = () => {
+    const list = [...project, { project: "", projectDescription: "" }];
+    setProjects(list);
+  };
   const removeEducation = (index) => {
     if (educationList.length !== 1) {
       let list = [...educationList];
@@ -89,6 +101,13 @@ const Forms = () => {
       setExperience(list);
     }
   };
+  const removeProject = (index) => {
+    if (project.length !== 1) {
+      let list = [...project];
+      list.splice(index, 1);
+      setProjects(list);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -103,7 +122,8 @@ const Forms = () => {
           personal={personal}
           education={educationList}
           experience={experienceList}
-          skill = {skills}
+          skill={skills}
+          project={project}
           submit={handleSubmit}
         />
       );
@@ -123,7 +143,6 @@ const Forms = () => {
       </div>
     );
   };
-  
 
   return (
     <div>
@@ -136,6 +155,15 @@ const Forms = () => {
           <section>
             <h2>Skills</h2>
             <Skills skill={skills} skillChange={handleSkillChange}></Skills>
+          </section>
+          <section>
+            <h2>Projects</h2>
+            <Projects
+              add={addProject}
+              handleChange={handleProjectChange}
+              inputList={project}
+              remove={removeProject}
+            ></Projects>
           </section>
           <section className="edu-sect">
             <h2>Education</h2>
@@ -169,6 +197,3 @@ const Forms = () => {
 };
 
 export default Forms;
-
-
-

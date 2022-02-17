@@ -48,7 +48,7 @@ const Experience = ({ inputList, handleChange, add, remove }) => {
       })}
       )
       <button type="button" onClick={() => add()}>
-        Add Education
+        Add Experience
       </button>
     </fieldset>
   );

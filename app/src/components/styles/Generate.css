@@ -71,3 +71,13 @@
     font-size: 13.5px;
     line-height: 4px;
 }
+
+.project-display>h2 {
+    color: #626363;
+    font-size: 19px;
+}
+
+.project-display>div {
+    font-size: 13.5px;
+    line-height: 7px;
+}

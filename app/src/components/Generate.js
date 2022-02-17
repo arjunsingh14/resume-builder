@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/Generate.css";
-const Generate = ({ education, experience, personal, skill }) => {
+const Generate = ({ education, experience, personal, skill, project }) => {
   const { firstName, lastName, linkedin, github, number, email } = personal;
   return (
     <article className="resume">
@@ -14,6 +14,17 @@ const Generate = ({ education, experience, personal, skill }) => {
           <span className="contact web">{github}</span>
           <span className="contact web">{linkedin}</span>
         </div>
+      </section>
+      <section className="project-display">
+        <h2 className="projects">Projects</h2>
+        {project.map((proj, index) => {
+          return (
+          <div className="project-container" key={index}>
+            <p>{proj.project}</p>
+            <p>{proj.projectDescription}</p>
+          </div>
+          );
+        })}
       </section>
       <section className="skills-display">
         <h2 className="skills">Skills</h2>
