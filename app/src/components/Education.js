@@ -28,9 +28,29 @@ const Education = ({ inputList, handleChange, add, remove }) => {
               />
             </div>
             <div>
+              <label htmlFor="gpa">GPA</label>
+              <input
+                type="text"
+                name="gpa"
+                id="gpa"
+                value={input.gpa}
+                onChange={(e) => handleChange(e, index)}
+              />
+            </div>
+            <div>
+              <label htmlFor="award">Awards</label>
+              <input
+                type="text"
+                name="awards"
+                id="award"
+                value={input.awards}
+                onChange={(e) => handleChange(e, index)}
+              />
+            </div>
+            <div>
               <label htmlFor="startDate">Start Date</label>
               <input
-                type="date"
+                type="text"
                 name="startDate"
                 id="startDate"
                 value={input.startDate}
@@ -40,7 +60,7 @@ const Education = ({ inputList, handleChange, add, remove }) => {
             <div>
               <label htmlFor="endDate">End Date</label>
               <input
-                type="date"
+                type="text"
                 name="endDate"
                 id="endDate"
                 value={input.endDate}

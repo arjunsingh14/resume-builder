@@ -5,36 +5,31 @@ import Education from "./Education";
 import Experience from "./Experience";
 import Generate from "./Generate";
 const Forms = () => {
-  const [generate, setGenerate] = useState(true);
+  const [generate, setGenerate] = useState(false);
   const [personal, setPersonal] = useState({
-    firstName: "Arjun",
-    lastName: "Bhandal",
-    linkedin: "linkedin.com",
-    github: "github.com",
-    number: "6478391406",
-    email: "arjunsingh140601@gmail.com",
+    firstName: "",
+    lastName: "",
+    linkedin: "",
+    github: "",
+    number: "",
+    email: "",
   });
   const [educationList, setEducation] = useState([
-    { schoolName: "Ryerson University", degree: "BSc in Computer Science", startDate: "September 2021", endDate: "May 2026" },
+    {
+      schoolName: "",
+      degree: "",
+      gpa:"",
+      awards: "",
+      startDate: "",
+      endDate: "",
+    },
   ]);
   const [experienceList, setExperience] = useState([
     {
-      experience: "Unemployed",
-      startDate: "June 2001",
-      endDate: "Febuary 2022",
-      description: "Just jobless lololololol",
-    },
-    {
-      experience: "Unemployed",
-      startDate: "June 2001",
-      endDate: "Febuary 2022",
-      description: "Just jobless lololololol",
-    },
-    {
-      experience: "Unemployed",
-      startDate: "June 2001",
-      endDate: "Febuary 2022",
-      description: "Just jobless lololololol",
+      experience: "",
+      startDate: "",
+      endDate: "",
+      description:"",
     },
   ]);
   const handlePersonalChange = (e) => {
@@ -95,7 +90,7 @@ const Forms = () => {
         <form onSubmit={(e) => handleSubmit(e)}>
           <section className="personal-sect">
             <h2>Personal Information</h2>
-            <Personal {...personal} onChange={handlePersonalChange}/>
+            <Personal personal={personal} onChange={handlePersonalChange} />
           </section>
           <section className="edu-sect">
             <h2>Education</h2>

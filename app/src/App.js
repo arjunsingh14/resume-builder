@@ -7,6 +7,7 @@ const App = () => {
     <main>
       <Header/>
       <Forms/>
+      <footer>Arjun Singh</footer>
     </main>
   )
 }

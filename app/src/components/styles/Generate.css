@@ -26,11 +26,37 @@
 
 .education-display>h2 {
     color: black;
+    font-size: 20px;
 }
 
-.education-display>div {
+.education-display>div>div {
     display: flex;
     justify-content: space-between;
     font-size: 13.5px;
-    margin-top: -15px;
+    margin-top: -25px;
+}
+
+.education-display>div>p{
+    font-size: 13.5px;
+    margin-top:-7px;
+}
+
+.experience-display>h2 {
+    font-size: 20px;
+    color: black;
+}
+
+.experience-top {
+    margin-top: -18px;
+    display: flex;
+    justify-content: space-between;
+}
+.experience-top{
+    font-size: 14px;
+}
+
+.experience-bottom {
+    margin-top: -18px;
+    margin-bottom: 25px;
+    font-size: 12px;
 }

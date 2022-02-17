@@ -7,7 +7,7 @@ const Experience = ({ inputList, handleChange, add, remove }) => {
       {inputList.map((input, index) => {
         return (
           <div className="experience" key={index}>
-            <label htmlFor="experience">experience</label>
+            <label htmlFor="experience">Experience</label>
             <input
               type="text"
               name="experience"
@@ -17,7 +17,7 @@ const Experience = ({ inputList, handleChange, add, remove }) => {
             />
             <label htmlFor="startDate">Start Date</label>
             <input
-              type="date"
+              type="text"
               name="startDate"
               id="startDate"
               value={input.startDate}
@@ -25,7 +25,7 @@ const Experience = ({ inputList, handleChange, add, remove }) => {
             />
             <label htmlFor="endDate">End Date</label>
             <input
-              type="date"
+              type="text"
               name="endDate"
               id="endDate"
               value={input.endDate}

@@ -1,7 +1,7 @@
 import React from "react";
 import './styles/Personal.css'
 
-const Personal = ({onChange}) => {
+const Personal = ({personal,  onChange}) => {
   return (
     <fieldset className="personal-info">
       <div className="firstname">
@@ -10,6 +10,7 @@ const Personal = ({onChange}) => {
           type="text"
           id="firstName"
           name="firstName"
+          value={personal.firstName}
           onChange={(e) => onChange(e)}
         />
       </div>
@@ -19,6 +20,7 @@ const Personal = ({onChange}) => {
           type="text"
           id="lastName"
           name="lastName"
+          value={personal.lastName}
           onChange={(e) => onChange(e)}
         />
       </div>
@@ -28,6 +30,7 @@ const Personal = ({onChange}) => {
           type="email"
           id="email"
           name="email"
+          value={personal.email}
           onChange={(e) => onChange(e)}
         />
       </div>
@@ -37,6 +40,7 @@ const Personal = ({onChange}) => {
           type="text"
           id="phoneNumber"
           name="number"
+          value={personal.number}
           onChange={(e) => onChange(e)}
         />
       </div>
@@ -46,6 +50,7 @@ const Personal = ({onChange}) => {
           type="text"
           id="github"
           name="github"
+          value={personal.github}
           onChange={(e) => onChange(e)}
         />
       </div>
@@ -55,6 +60,7 @@ const Personal = ({onChange}) => {
           type="text"
           id="linkedin"
           name="linkedin"
+          value={personal.linkedin}
           onChange={(e) => onChange(e)}
         />
       </div>
