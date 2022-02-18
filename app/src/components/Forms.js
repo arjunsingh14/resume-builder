@@ -10,8 +10,8 @@ import Generate from "./Generate";
 const Forms = () => {
   const [generate, setGenerate] = useState(false);
   const [project, setProjects] = useState([{
-    project: "Resume Builder",
-    projectDescription: "Built a resume builder using ReactJS and HTML/CSS",
+    project: "",
+    projectDescription: "",
   }]);
   const [check, setCheck] = useState(true)
   const [skills, setSkills] = useState({

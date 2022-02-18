@@ -16,7 +16,7 @@
     justify-content: space-between;
 }
 .contact {
-    font-size: 13.5px;
+    font-size: 11px;
 }
 
 .web {
@@ -79,5 +79,9 @@
 
 .project-display>div {
     font-size: 13.5px;
-    line-height: 7px;
+    line-height: 5px;
+}
+
+.project-container>:first-child {
+    
 }

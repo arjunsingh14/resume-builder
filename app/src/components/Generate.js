@@ -1,6 +1,13 @@
 import React from "react";
 import "./styles/Generate.css";
-const Generate = ({ education, experience, personal, skill, project, check }) => {
+const Generate = ({
+  education,
+  experience,
+  personal,
+  skill,
+  project,
+  check,
+}) => {
   const { firstName, lastName, linkedin, github, number, email } = personal;
   return (
     <article className="resume">
@@ -13,28 +20,6 @@ const Generate = ({ education, experience, personal, skill, project, check }) =>
           <span className="contact web">{email}</span>
           <span className="contact web">{github}</span>
           <span className="contact web">{linkedin}</span>
-        </div>
-      </section>
-      <section className="project-display">
-        <h2 className="projects">Projects</h2>
-        {project.map((proj, index) => {
-          return (
-          <div className="project-container" key={index}>
-            <p>{proj.project}</p>
-            <p>{proj.projectDescription}</p>
-          </div>
-          );
-        })}
-      </section>
-      <section className="skills-display">
-        <h2 className="skills">Skills</h2>
-        <div className="skills-container">
-          <p>
-            <b>Languages:</b> {skill.language}
-          </p>
-          <p>
-            <b>Technologies:</b> {skill.technology}
-          </p>
         </div>
       </section>
       <section className="education-display">
@@ -51,29 +36,55 @@ const Generate = ({ education, experience, personal, skill, project, check }) =>
                 </p>
               </div>
               <p>GPA: {edu.gpa}/4.0</p>
-              <p>Award: {edu.awards}</p>
+              <p>Awards: {edu.awards}</p>
             </div>
           );
         })}
-      </section>
-      {!check && <section className="experience-display">
-        <h2>Experience</h2>
-        {experience.map((exp, index) => {
-          return (
-            <div key={index}>
-              <div className="experience-top">
-                <p>{exp.experience}</p>
+        <section className="project-display">
+          <h2 className="projects">Projects</h2>
+          {project.map((proj, index) => {
+            return (
+              <div className="project-container" key={index}>
                 <p>
-                  {exp.startDate}-{exp.endDate}
+                  <b>{proj.project}</b>
                 </p>
+                <p>- {proj.projectDescription}</p>
               </div>
-              <div className="experience-bottom">
-                <p>{exp.description}</p>
+            );
+          })}
+        </section>
+        <section className="skills-display">
+          <h2 className="skills">Skills</h2>
+          <div className="skills-container">
+            <p>
+              <b>Languages:</b> {skill.language}
+            </p>
+            <p>
+              <b>Technologies:</b> {skill.technology}
+            </p>
+          </div>
+        </section>
+      </section>
+      {!check && (
+        <section className="experience-display">
+          <h2>Experience</h2>
+          {experience.map((exp, index) => {
+            return (
+              <div key={index}>
+                <div className="experience-top">
+                  <p>{exp.experience}</p>
+                  <p>
+                    {exp.startDate}-{exp.endDate}
+                  </p>
+                </div>
+                <div className="experience-bottom">
+                  <p>{exp.description}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </section>}
+            );
+          })}
+        </section>
+      )}
     </article>
   );
 };

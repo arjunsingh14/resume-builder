@@ -12,7 +12,7 @@ const Projects = ({ add, handleChange, inputList, remove }) => {
                 type="text"
                 name="project"
                 id="project"
-                value={input.experience}
+                value={input.project}
                 onChange={(e) => handleChange(e, index)}
               />
         
@@ -22,7 +22,7 @@ const Projects = ({ add, handleChange, inputList, remove }) => {
                 id="projectDescription"
                 cols="50"
                 rows="4"
-                value={input.description}
+                value={input.projectDescription}
                 onChange={(e) => handleChange(e, index)}
               ></textarea>
               <button
